@@ -1,0 +1,47 @@
+\documentclass[aspectratio=169,mathserif]{beamer}
+\usepackage{amsmath,bm,amsfonts,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{physics}
+\usepackage{siunitx}
+\input{tikz_settings}
+\usepackage{booktabs}
+\usepackage{makecell}
+
+\usepackage{EPFLbeamer}
+
+
+\ImageBackground{fig/Picture1.jpg}
+\ImageTitle{fig/Picture1.jpg}
+\ImageSec{fig/Picture2.jpg}
+\ImageBack{fig/Picture1.jpg}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title[]{This is a very interesting presentation}
+\author{\underline{Presenting Author} 
+\newline Other Author
+\newline Another Author
+\newline Another Author}
+\date{March, 2024}
+
+\begin{document}
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\input{src/motivation}
+\input{src/formulation}
+\input{src/results}
+\input{src/outlook}
+\section{References}
+\begin{frame}
+        \frametitle{References}
+    \nocite{*}
+    \bibliographystyle{IEEEtran}
+    \bibliography{References}
+\end{frame}
+\backmatter
+
+
+\end{document}

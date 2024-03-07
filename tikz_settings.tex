@@ -1,0 +1,96 @@
+%% TiKz Settings %%%
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{dateplot,
+                    groupplots,
+                    fillbetween,
+                    polar,
+                    colormaps,
+                    colorbrewer}
+\pgfplotscreateplotcyclelist{mycolorlinestyles}{RdYlBu-4-1\\%
+                                               RdYlBu-4-1,dashed\\%
+                                               RdYlBu-4-2\\%
+                                               RdYlBu-4-2,dashed\\%
+                                               RdYlBu-4-4\\%
+                                               RdYlBu-4-4,dashed\\%
+                                               }                                        
+\pgfplotsset{every axis/.append style={line width=1pt}}
+\usepackage{tikz}
+\usepackage{tikz-dimline}
+\usepackage{tikzscale}
+\usetikzlibrary{patterns,
+                shapes,
+                shapes.misc,
+				arrows,
+				positioning,
+				fit,
+				calc,
+				automata,
+				intersections,
+				trees,
+				chains,
+				decorations.pathreplacing,
+				decorations.pathmorphing,
+				decorations.text,
+				matrix,
+                colorbrewer}
+\usepackage{tkz-euclide}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d,arrows.meta}
+\def\antenna{%
+    -- +(0mm,4.0mm) -- +(2.625mm,7.5mm) -- +(-2.625mm,7.5mm) -- +(0mm,4.0mm)
+}
+\def\substrate{green!40!white}
+\def\pec{black!50!white}
+\def\feed{red!80!white}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={0.15cm}}
+
+\definecolor{RdYlBu-4-1}{RGB}{215,25,28}
+\definecolor{RdYlBu-4-C}{RGB}{215,25,28}
+\definecolor{RdYlBu-4-2}{RGB}{253,174,97}
+\definecolor{RdYlBu-4-F}{RGB}{253,174,97}
+\definecolor{RdYlBu-4-3}{RGB}{171,217,233}
+\definecolor{RdYlBu-4-J}{RGB}{171,217,233}
+\definecolor{RdYlBu-4-4}{RGB}{44,123,182}
+\definecolor{RdYlBu-4-M}{RGB}{44,123,182}
+
+
+\definecolor{RdYlBu-11-1}{RGB}{165,0,38}
+\definecolor{RdYlBu-11-A}{RGB}{165,0,38}
+\definecolor{RdYlBu-11-2}{RGB}{215,48,39}
+\definecolor{RdYlBu-11-B}{RGB}{215,48,39}
+\definecolor{RdYlBu-11-3}{RGB}{244,109,67}
+\definecolor{RdYlBu-11-D}{RGB}{244,109,67}
+\definecolor{RdYlBu-11-4}{RGB}{253,174,97}
+\definecolor{RdYlBu-11-F}{RGB}{253,174,97}
+\definecolor{RdYlBu-11-5}{RGB}{254,224,144}
+\definecolor{RdYlBu-11-G}{RGB}{254,224,144}
+\definecolor{RdYlBu-11-6}{RGB}{255,255,191}
+\definecolor{RdYlBu-11-H}{RGB}{255,255,191}
+\definecolor{RdYlBu-11-7}{RGB}{224,243,248}
+\definecolor{RdYlBu-11-I}{RGB}{224,243,248}
+\definecolor{RdYlBu-11-8}{RGB}{171,217,233}
+\definecolor{RdYlBu-11-J}{RGB}{171,217,233}
+\definecolor{RdYlBu-11-9}{RGB}{116,173,209}
+\definecolor{RdYlBu-11-L}{RGB}{116,173,209}
+\definecolor{RdYlBu-11-10}{RGB}{69,117,180}
+\definecolor{RdYlBu-11-N}{RGB}{69,117,180}
+\definecolor{RdYlBu-11-11}{RGB}{49,54,149}
+\definecolor{RdYlBu-11-O}{RGB}{49,54,149}
+
+\pgfplotsset{colormap={RdYlBu_Custom}{
+  color=(RdYlBu-11-11);
+  color=(RdYlBu-11-10);
+  color=(RdYlBu-11-9);
+  color=(RdYlBu-11-8);
+  color=(RdYlBu-11-7);
+  color=(RdYlBu-11-6);
+  color=(RdYlBu-11-5);
+  color=(RdYlBu-11-4);
+  color=(RdYlBu-11-3);
+  color=(RdYlBu-11-2);
+  color=(RdYlBu-11-1);
+}}

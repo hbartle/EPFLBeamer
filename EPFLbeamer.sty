@@ -1,0 +1,180 @@
+\RequirePackage{geometry}
+\geometry{paperwidth=16cm,paperheight=9cm}
+
+%\usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsfonts,amsmath,oldgerm}
+
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,
+                shapes,
+                shapes.misc,
+				arrows,
+				positioning,
+				fit,
+				calc,
+				automata,
+				intersections,
+				trees,
+				chains,
+				decorations.pathreplacing,
+				decorations.pathmorphing,
+				decorations.text,
+				matrix}
+
+\newcommand{\ImageBackground}[1]{\def \useBackground {\includegraphics[width=\paperwidth,height=\paperheight]{#1}}}
+\newcommand{\ImageTitle}[1]{\def \BackgroundTitle {#1}}
+\newcommand{\ImageSec}[1]{\def \BackgroundSec {#1}}
+\newcommand{\ImageBack}[1]{\def \BackgroundBack {#1}}
+
+
+\definecolor{mygrey}{RGB}{65,60,58}
+\definecolor{myred}{RGB}{227,6,19}
+\definecolor{mygrey2}{RGB}{127, 127, 127}
+
+
+\setbeamercolor{itemize item}{fg=myred}
+\setbeamercolor{itemize subitem}{fg=myred}
+\setbeamercolor{itemize subsubitem}{fg=myred}
+
+\setbeamertemplate{items}[square]
+
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+% #==> STYLE TITLE PAGE
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west] 
+  at ([yshift=0.2cm]$(current page.north west)!0.15!(current page.north east)$)
+  (background)
+  {\includegraphics[width=0.85\paperwidth]{\BackgroundTitle}}; 
+  \node[fill=myred,text=white,anchor=north east,font=\sffamily\LARGE,text width=.65\paperwidth,minimum height=3.5cm] 
+  at ($(current page.north east)!0.2!(current page.south east)$)
+  (title)
+  {\raggedright\inserttitle};   
+  \node[fill=mygrey,text=white,anchor=north west,font=\sffamily\large,text width=.35\paperwidth,minimum height=2.5cm] 
+  at (title.south west)
+  (authors)
+  {\raggedright\insertauthor}; 
+  \node[fill=white,text=black,font=\large\sffamily,anchor=south west, minimum height=1cm,minimum width=2.5]
+  at ([xshift=-4cm,yshift=0cm]current page.south east)
+  (date)
+  {\insertdate};`
+
+\node[anchor=north west] 
+  at (current page.north west)
+  (logo1)
+  {\includegraphics[width=0.15\paperwidth]{fig/epfl_logo.png}};
+
+    \node[fill=myred,minimum width=0.05cm,minimum height=0.15cm] at ([xshift=0cm,yshift=1cm] current page.south west) (text) {};
+    \node [anchor=west,text=myred] (text2) at (text.east) {\tiny Conference 2024};
+    \node [anchor=west,text=myred] (text3) at ([yshift=-0.3cm]text.east) {\tiny City};
+
+  \end{tikzpicture}%
+}
+
+% #===> STYLE NORMAL FRAMES
+\setbeamersize{sidebar width left=0.05\paperwidth}
+\setbeamertemplate{sidebar left}{\begin{tikzpicture}
+
+\node[anchor=north west] 
+  at (current page.north west)
+  (logo1)
+  {\includegraphics[width=0.1\paperwidth]{fig/epfl_logo.png}};
+
+\end{tikzpicture}
+
+\vfill
+\hspace{0.5cm}
+\rotatebox[]{90}{\begin{tikzpicture}
+    \node[fill=myred,minimum width=0.1cm,minimum height=0.15cm] (text) {};
+    \node [anchor=west,text=myred] at (text.east) {\tiny Conference 2024, City};
+\end{tikzpicture}}
+\vspace{0.5cm}
+}
+
+
+
+\setbeamercolor{frametitle}{fg=black}
+
+\setbeamertemplate{frametitle}{
+        \vspace{0.3cm}
+        {\Large\bfseries\insertframetitle}
+        \hfill
+        \tiny\bfseries\insertpagenumber{}
+}
+
+\makeatletter
+    \pretocmd\beamer@checkframetitle{\framesubtitle{\ifx\insertsection\empty {} \else {\thesection \, \secname} \fi}}
+\makeatother
+
+
+% #===> STYLE SECTIONS
+
+\setbeamerfont{section in toc}{size=\Huge}
+\setbeamerfont{section in toc shaded}{size=\normalsize}
+\setbeamertemplate{section in toc}{\textbf{\inserttocsection}}
+
+\setbeamertemplate{section in toc shaded}{\textbf{\inserttocsection}}
+\setbeamercolor{section in toc}{fg=white}
+\setbeamercolor{section in toc shaded}{fg=mygrey2}
+
+\AtBeginSection[]
+{
+  \begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west] 
+  at ([yshift=0.2cm]$(current page.north west)!0.14!(current page.north east)$)
+  (background)
+  {\includegraphics[height=1.05\paperheight]{\BackgroundSec}}; 
+  \node[fill=mygrey,anchor=north east,text width=.4\paperwidth,minimum height=\paperheight,inner sep=0.5cm] 
+  at (current page.north east)
+  (title)
+  {\raggedright
+\setlength{\parskip}{3ex}
+\tableofcontents[sectionstyle=show/shaded]
+  };   
+
+  \end{tikzpicture}%
+    
+}
+
+% #===> STYLE BACK MATTER
+
+\newcommand{\backmatter}[1][]{
+      \begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west] 
+  at ([yshift=0.2cm]$(current page.north west)!0.1!(current page.north east)$)
+  (background)
+  {\includegraphics[width=\paperwidth]{\BackgroundBack}}; 
+  \node[fill=mygrey,text=white,anchor=north east,text width=.4\paperwidth,minimum height=\paperheight,inner sep=0.5cm] 
+  at (current page.north east)
+  (title)
+  {\raggedright
+    Thank you!
+  };   
+
+  \end{tikzpicture}%
+}
+
+
+% #===> STYLE BIBLIOGRAPHY
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize,series=\bfseries}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
